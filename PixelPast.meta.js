@@ -10,10 +10,10 @@
 // @match        https://tankionline.com/ru/
 // @match        https://tankionline.com/en/
 
-// @icon         https://raw.githubusercontent.com/sheezzmee/PixelPast/main/assets/icon.png
+// @icon         https://raw.githubusercontent.com/MEGAMUSHROOMYT/rrerer/main/assets/icon.png
 
-// @downloadURL  https://raw.githubusercontent.com/sheezzmee/PixelPast/main/PixelPast.user.js
-// @updateURL    https://raw.githubusercontent.com/sheezzmee/PixelPast/main/PixelPast.meta.js
+// @downloadURL  https://raw.githubusercontent.com/MEGAMUSHROOMYT/rrerer/main/PixelPast.user.js
+// @updateURL    https://raw.githubusercontent.com/MEGAMUSHROOMYT/rrerer/main/PixelPast.meta.js
 
 // @grant        GM.xmlHttpRequest
 // @grant        GM.addStyle
