@@ -1,0 +1,291 @@
+<html><head><script src="//archive.org/includes/analytics.js?v=cf34f82" type="text/javascript"></script>
+<script type="text/javascript">window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app226.us.archive.org';v.server_ms=800;archive_analytics.send_pageview({});});</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=t1Bf4PY_" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden"};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://test.tankionline.com","20130701124312","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1372682592");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=S1zqJCYt">
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=qtvMKcIJ">
+<!-- End Wayback Rewrite JS Include -->
+
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <link href="/web/20130701124312cs_/http://test.tankionline.com/test_server.css?v=1" rel="STYLESHEET" type="text/css">
+
+          <title>Tanki Online - Test Server</title>
+  <script>/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+var __webpack_exports__ = {};
+
+;// CONCATENATED MODULE: ../core/dist/flash-identifiers.js
+const FLASH_MIMETYPE = "application/x-shockwave-flash";
+const FUTURESPLASH_MIMETYPE = "application/futuresplash";
+const FLASH7_AND_8_MIMETYPE = "application/x-shockwave-flash2-preview";
+const FLASH_MOVIE_MIMETYPE = "application/vnd.adobe.flash.movie";
+const FLASH_ACTIVEX_CLASSID = "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000";
+
+;// CONCATENATED MODULE: ../core/dist/plugin-polyfill.js
+
+/**
+ * Replacement object for `MimeTypeArray` that lets us install new fake mime
+ * types.
+ *
+ * Unlike plugins we can at least enumerate mime types in Firefox, so we don't
+ * lose data.
+ *
+ * We also expose a method called `install` which adds a new plugin. This is
+ * used to falsify Flash detection. If the existing `navigator.mimeTypes` has an
+ * `install` method, you should not use `RuffleMimeTypeArray` as some other
+ * plugin emulator is already present.
+ */
+class RuffleMimeTypeArray {
+    constructor(mimeTypes) {
+        this.__mimeTypes = [];
+        this.__namedMimeTypes = {};
+        if (mimeTypes) {
+            for (let i = 0; i < mimeTypes.length; i++) {
+                this.install(mimeTypes[i]);
+            }
+        }
+    }
+    /**
+     * Install a MIME Type into the array.
+     *
+     * @param mimeType The mime type to install
+     */
+    install(mimeType) {
+        const index = this.__mimeTypes.length;
+        this.__mimeTypes.push(mimeType);
+        this.__namedMimeTypes[mimeType.type] = mimeType;
+        this[mimeType.type] = mimeType;
+        this[index] = mimeType;
+    }
+    item(index) {
+        // This behavior is done to emulate a 32-bit uint,
+        // which browsers use.
+        return this.__mimeTypes[index >>> 0];
+    }
+    namedItem(name) {
+        return this.__namedMimeTypes[name];
+    }
+    get length() {
+        return this.__mimeTypes.length;
+    }
+    [Symbol.iterator]() {
+        return this.__mimeTypes[Symbol.iterator]();
+    }
+}
+/**
+ * Equivalent object to `Plugin` that allows us to falsify plugins.
+ */
+class RufflePlugin extends RuffleMimeTypeArray {
+    constructor(name, description, filename) {
+        super();
+        this.name = name;
+        this.description = description;
+        this.filename = filename;
+    }
+}
+/**
+ * Replacement object for `PluginArray` that lets us install new fake plugins.
+ *
+ * This object needs to wrap the native plugin array, since the user might have
+ * actual plugins installed. Firefox doesn't let us enumerate the array, though,
+ * which has some consequences. Namely, we can't actually perfectly wrap the
+ * native plugin array, at least unless there's some secret "unresolved object
+ * property name handler" that I've never known before in JS...
+ *
+ * We can still wrap `namedItem` perfectly at least.
+ *
+ * We also expose a method called `install` which adds a new plugin. This is
+ * used to falsify Flash detection. If the existing `navigator.plugins` has an
+ * `install` method, you should not use `RufflePluginArray` as some other plugin
+ * emulator is already present.
+ */
+class RufflePluginArray {
+    constructor(plugins) {
+        this.__plugins = [];
+        this.__namedPlugins = {};
+        for (let i = 0; i < plugins.length; i++) {
+            this.install(plugins[i]);
+        }
+    }
+    install(plugin) {
+        const index = this.__plugins.length;
+        this.__plugins.push(plugin);
+        this.__namedPlugins[plugin.name] = plugin;
+        this[plugin.name] = plugin;
+        this[index] = plugin;
+    }
+    item(index) {
+        // This behavior is done to emulate a 32-bit uint,
+        // which browsers use. Cloudflare's anti-bot
+        // checks rely on this.
+        return this.__plugins[index >>> 0];
+    }
+    namedItem(name) {
+        return this.__namedPlugins[name];
+    }
+    refresh() {
+        // Nothing to do, we just need to define the method.
+    }
+    [Symbol.iterator]() {
+        return this.__plugins[Symbol.iterator]();
+    }
+    get length() {
+        return this.__plugins.length;
+    }
+}
+/**
+ * A fake plugin designed to trigger Flash detection scripts.
+ */
+const FLASH_PLUGIN = new RufflePlugin("Shockwave Flash", "Shockwave Flash 32.0 r0", "ruffle.js");
+FLASH_PLUGIN.install({
+    type: FUTURESPLASH_MIMETYPE,
+    description: "Shockwave Flash",
+    suffixes: "spl",
+    enabledPlugin: FLASH_PLUGIN,
+});
+FLASH_PLUGIN.install({
+    type: FLASH_MIMETYPE,
+    description: "Shockwave Flash",
+    suffixes: "swf",
+    enabledPlugin: FLASH_PLUGIN,
+});
+FLASH_PLUGIN.install({
+    type: FLASH7_AND_8_MIMETYPE,
+    description: "Shockwave Flash",
+    suffixes: "swf",
+    enabledPlugin: FLASH_PLUGIN,
+});
+FLASH_PLUGIN.install({
+    type: FLASH_MOVIE_MIMETYPE,
+    description: "Shockwave Flash",
+    suffixes: "swf",
+    enabledPlugin: FLASH_PLUGIN,
+});
+/**
+ * Install a fake plugin such that detectors will see it in `navigator.plugins`.
+ *
+ * This function takes care to check if the existing implementation of
+ * `navigator.plugins` already accepts fake plugin entries. If so, it will use
+ * that version of the plugin array. This allows the plugin polyfill to compose
+ * across multiple plugin emulators with the first emulator's polyfill winning.
+ *
+ * @param plugin The plugin to install
+ */
+function installPlugin(plugin) {
+    if (!("install" in navigator.plugins) || !navigator.plugins["install"]) {
+        Object.defineProperty(navigator, "plugins", {
+            value: new RufflePluginArray(navigator.plugins),
+            writable: false,
+        });
+    }
+    const plugins = navigator.plugins;
+    plugins.install(plugin);
+    if (plugin.length > 0 &&
+        (!("install" in navigator.mimeTypes) || !navigator.mimeTypes["install"])) {
+        Object.defineProperty(navigator, "mimeTypes", {
+            value: new RuffleMimeTypeArray(navigator.mimeTypes),
+            writable: false,
+        });
+    }
+    const mimeTypes = navigator.mimeTypes;
+    for (let i = 0; i < plugin.length; i += 1) {
+        mimeTypes.install(plugin[i]);
+    }
+}
+
+;// CONCATENATED MODULE: ./src/plugin-polyfill.ts
+// This file is compiled and then injected into content.ts's compiled form.
+
+installPlugin(FLASH_PLUGIN);
+
+/******/ })()
+;</script><script charset="utf-8" src="moz-extension://cb1a92d7-3dfe-40cf-80fc-d2121755532d/dist/ruffle.js?id=42020320884"></script></head>
+  <body bgcolor="#201c18" topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" marginheight="0" marginwidth="0" background="/web/20130701124312im_/http://test.tankionline.com/images/background.jpg"><!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<script>__wm.rw(0);</script>
+<div id="wm-ipp-base" lang="en" style="display: block; direction: ltr;">
+</div><div id="wm-ipp-print">The Wayback Machine - https://web.archive.org/web/20130701124312/http://test.tankionline.com/</div>
+<script type="text/javascript">//<![CDATA[
+__wm.bt(725,27,25,2,"web","http://test.tankionline.com/","20130701124312",1996,"https://web-static.archive.org/_static/",["https://web-static.archive.org/_static/css/banner-styles.css?v=S1zqJCYt","https://web-static.archive.org/_static/css/iconochive.css?v=qtvMKcIJ"], false);
+  __wm.rw(1);
+//]]></script>
+<!-- END WAYBACK TOOLBAR INSERT -->
+ 
+  <center>
+
+    <img src="/web/20130701124312im_/http://test.tankionline.com/images/spacer.gif" width="400" height="50">
+    <table width="960" border="0" cellspacing="0" cellpadding="0" background="/web/20130701124312im_/http://test.tankionline.com/images/back_open.jpg" style="background-position:center;background-repeat:no-repeat;">
+
+      <tbody><tr>
+        <td width="280" valign="top" align="left" style="padding-top:60px;">
+          <img src="/web/20130701124312im_/http://test.tankionline.com/images/flag_rus.jpg" width="42" height="28" align="left" style="margin-top:5px; margin-right:15px;">
+
+          ?? ???????? ?? ???????? ??????? ???? «????? ??????».<br>
+          ?? ???????? ?????? ????? ?????? ????? ???????? ?????? ? ???????????? ??? ?????? ??? ?????????? ????????????. <br>
+
+          ?? ???????? ??????? ?????????? ? ???????? ??????? ?????? ??? ?? ???????? ??????? ? ???? ???? ????? ?????????? ?? ????? ?? ???????? ???????. ???, ??? ?? ??????????? ?? ???????? ??????? ??????? ?? ??????? ?? ???????? ??????. <br>
+
+          ???????? ?????? ???????? ?? ??????.<br>
+          <br>
+      <center>
+        <a href="https://web.archive.org/web/20130701124312/http://test.tankionline.com/index_ru.html" class="submit">???????? ?????? 1</a>
+      </center>
+      <center>
+        <a href="https://web.archive.org/web/20130701124312/http://test2.tankionline.com/" class="submit">???????? ?????? 2</a>
+      </center>
+      <center>
+        <a href="https://web.archive.org/web/20130701124312/http://test.tankionline.com/indexn3_ru.html" class="submit">???????? ?????? 3</a>
+      </center>
+      <center>
+        <a href="https://web.archive.org/web/20130701124312/http://testcore.tankionline.com/" class="submit">???????? ?????? 4</a>
+      </center>
+
+      <div style="margin-top:10px; text-align:center;"><a style="" href="https://web.archive.org/web/20130701124312/http://tankionline.com/tester/">? ???? ????? ????????!</a></div>
+
+      <br>
+      </td>
+
+      <td><img src="/web/20130701124312im_/http://test.tankionline.com/images/spacer.gif" width="400" height="750"></td>
+
+      <td width="280" valign="top" align="left" style="padding-top:60px;">
+
+        <img src="/web/20130701124312im_/http://test.tankionline.com/images/flag_eng.jpg" width="42" height="28" align="left" style="margin-top:5px; margin-right:15px;">
+
+        Welcome to test server of "Tanki Online".<br>
+        Test server can be visited by group of testers and players invited by them.<br>
+
+        You have much more crystals on test server than on the main one and your rank can differ from that on the main server.<br>
+
+        Anything you earn on test server will never appear on the main server.<br>
+        Test server is not always active.<br>
+
+        <br>
+        <br>
+        <br>
+      <center>
+        <a href="https://web.archive.org/web/20130701124312/http://test.tankionline.com/index_en.html" class="submit">Test Server 1</a>
+      </center>
+      <center>
+        <a href="https://web.archive.org/web/20130701124312/http://test2.tankionline.com/" class="submit">Test Server 2</a>
+      </center>
+      <center>
+        <a href="https://web.archive.org/web/20130701124312/http://test.tankionline.com/indexn3_en.html" class="submit">Test Server 3</a>
+      </center>
+      <center>
+        <a href="https://web.archive.org/web/20130701124312/http://testcore.tankionline.com/" class="submit">Test Server 4</a>
+      </center>
+      <br>
+      </td>
+      </tr>
+    </tbody></table>
+  
+
+
+
+</center></body></html>
