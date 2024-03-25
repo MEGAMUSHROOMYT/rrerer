@@ -1,0 +1,27 @@
+import { decodeResourceUrl, parseFile } from './utils.js';
+import GM_fetch from '@trim21/gm-fetch';
+import packageJSON from '../package.json'
+
+export default class Resources {
+    resourceOverride = [];
+
+    originalFetch = window.fetch;
+
+    constructor() {
+        parseFile(`${packageJSON.usercontent}/resources/meta.json`, this);
+        unsafeWindow.fetch = this.fetch;
+    }
+
+    fetch = async (input, init) => {
+        const resourseId = decodeResourceUrl(input);
+
+        if (resourseId) {
+            for (let index = this.resourceOverride.length - 1; index >= 0; index--) {
+                if (resourseId === this.resourceOverride[index].id && input.search(this.resourceOverride[index].file) !== -1)
+                    return GM_fetch(this.resourceOverride[index].url, init)
+            }
+        }
+        
+        return this.originalFetch(input, init);
+    }
+}
